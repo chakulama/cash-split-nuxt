@@ -11,20 +11,27 @@
         v-model="item.amount"
         color="primary"
         variant="outline"
-        placeholder="Amount"
+        placeholder="0"
         type="number"
         @input="calculateOwes"
       ></UInput>
-    </div>
-    <UButton @click="addItem"> Add User</UButton>
 
-    <div class="border rounded mt-4 p-4">
-      <div>summary block:</div>
-      <div>total: {{ totalAmount }}</div>
-      <div>average: {{ averageAmount }}</div>
+      <UButton
+        @click="removeItem(item)"
+        icon="i-heroicons-x-mark-20-solid"
+        size="sm"
+      />
     </div>
-    <div v-for="(owe, index) in owes" :key="index">
-      {{ owe[1] }} --> {{ owe[0] }} ---> {{ owe[2] }}
+    <div class="flex">
+      <UButton @click="addItem" class="m-auto"> Add User</UButton>
+    </div>
+    <div class="border rounded mt-4 p-4">
+      <div>Who pays whom how much:</div>
+      <div>totalAmount: {{ totalAmount }}</div>
+      <div>averageAmount: {{ averageAmount }}</div>
+      <div v-for="(owe, index) in owes" :key="index">
+        {{ owe[1] }} --> {{ owe[0] }} ---> {{ owe[2] }}
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +46,12 @@ const owes = ref([]);
 
 const addItem = () => {
   users.value.push({ name: "", amount: 0 });
+};
+const removeItem = (user) => {
+  const index = users.value.indexOf(user);
+  if (index !== -1) {
+    users.value.splice(index, 1);
+  }
 };
 const totalAmount = computed(() => {
   return users.value.reduce((accumulator, currentItem) => {
@@ -63,7 +76,7 @@ const calculateOwes = () => {
       owes.value.push([
         users.value[i].name,
         users.value[j].name,
-        `$${Math.abs(min)}`,
+        `${Math.abs(min)}`,
       ]);
       users.value[i].balance -= min;
       users.value[j].balance += min;

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col items-center p-8">
+  <div class="flex flex-col items-center">
     <Header />
-    <Calculator></Calculator>
+    <Calculator class="p-8"></Calculator>
   </div>
 </template>
 

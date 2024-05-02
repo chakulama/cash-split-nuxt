@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col items-center p-8">
-    <UButton variant="ghost">button testing</UButton>
+    <Header />
+    <Calculator></Calculator>
   </div>
 </template>
 

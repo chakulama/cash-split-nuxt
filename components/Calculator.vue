@@ -2,7 +2,7 @@
   <div>Project Title here(optional)</div>
   <div>
     <CalculatorForm></CalculatorForm>
-    <div>share</div>
+    <div>share + QR here</div>
   </div>
 </template>
 

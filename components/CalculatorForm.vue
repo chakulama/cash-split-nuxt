@@ -38,9 +38,8 @@
 
 <script setup>
 const users = ref([
-  { name: "user1", amount: 30 },
-  { name: "user2", amount: 30 },
-  { name: "user3", amount: 0 },
+  { name: "user1", amount: 0 },
+  { name: "user2", amount: 0 }
 ]);
 const owes = ref([]);
 
